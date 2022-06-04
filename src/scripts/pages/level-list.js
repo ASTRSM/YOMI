@@ -1,22 +1,61 @@
-import levelListData from "../data/level-list"
+import levelListData from '../data/level-list'
+import user from '../data/user'
 
 const levelList = {
-  render () {
+  render() {
     return `
       <section id='level-list_container'>
-        <h2>Level List</h2>
+        <h2>LEVEL LIST</h2>
         <div id='level-list'>
+          <div class='middle-line'></div>
         </div>
       </section>
     `
   },
 
-  afterRender () {
-    Object.keys(levelListData).forEach(level => {
-      const levelButton = `<a href='#/level/${level}' id='${level}' class='level-item''>${level}</a>`
+  afterRender() {
+    let flag = 1
+    let levelFlag = user[0].highestLevelUnlocked
+
+    Object.keys(levelListData).forEach((level) => {
+      const levelButton = `
+      <div class='level-container'>
+        <div class='detail ${getDetailPlacement(flag)}'>
+          <div class='detail-line'></div>
+          <div class='detail-text'>${levelListData[level][0].question}</div>
+        </div>
+        <a href='#/level/${level}' id='${level}' class='level-item ${isCheckpoint(level)} ${isDone(levelFlag, flag)}''>${addSpace(level)}</a>
+      </div>
+      `
+      flag++
       $('#level-list').append(levelButton)
     })
   }
 }
 
-export default levelList;
+const isDone = (highestLevelUnlocked, flag) => {
+  if (flag > highestLevelUnlocked) {
+    return 'disable'
+  }
+}
+
+const getDetailPlacement = (flag) => {
+  if (flag % 2 === 0) {
+    return 'detail-left'
+  } else {
+    return 'detail-right'
+  }
+}
+
+const isCheckpoint = (level) => {
+  if (level.includes('checkpoint')) {
+    return `checkpoint`
+  }
+    return 'level'
+}
+
+const addSpace = (str) => {
+  return str.replace(/.{1}$/,' $&').toUpperCase() ;
+}
+
+export default levelList

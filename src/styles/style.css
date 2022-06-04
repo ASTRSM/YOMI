@@ -117,9 +117,12 @@ header p {
   border-color: #333;
 }
 
-.reason,
+.reason {
+  margin: 15rem 10rem 10rem 10rem;
+}
+
 .hiragana {
-  margin: 5rem 10rem 10rem 10rem;
+  margin: 10rem;
 }
 
 .reason h3 {
@@ -190,36 +193,120 @@ header p {
 
 #level-list_container h2 {
   font-size: 2rem;
-  margin-bottom: 1rem;
+  margin-bottom: 4rem;
+  text-align: center;
   font-family: 'Josefin Sans', sans-serif;
 }
 
 #level-list {
     display: flex;
+    flex-flow: column;
     justify-content: flex-start;
     align-items: center;
-    flex-wrap: wrap;
+    position: relative;
+}
+
+.level-container {
+  height: 130px;
+  width: max-content;
+  display: flex;
+  width: 100%;
+  position: relative;
+  margin: 2.5rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .level-item {
-    margin: .8rem;
-    box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.068);
-    border-radius: 10px;
-    background-color: #5c9ead;
+    z-index: 1;
+    display: grid;
+    place-items: center;
     padding: 1rem;
-    width: 200px;
-    height: 200px;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
     font-family: 'Josefin Sans', sans-serif;
+    user-select: none;
     transition: all 0.2s ease-in-out;
 }
 
-.level-item:hover {
-    transform: translateY(-5px);
+.level {
+  width: 130px;
+  height: 100%;
+  background-color: #5c9ead;
+  border: white solid 2px;
+  border-radius: 100%;
+}
+
+.checkpoint {
+  height: 65px;
+  width: 200px;
+  border-radius: 20px;
+  background-color: #f45b69;
+  color: #fff;
+  border: #fff solid 2px;
+}
+
+.checkpoint:hover {
+  background-color: #e39774;
+  color: #333;
+  border-color: #333;
+}
+
+.level:hover {
     background-color: #e39774;
     color: #333;
-    border-color: #333;
+    border: #333 solid 2px;
+}
+
+.disable {
+  background-color: #c5c5c5;
+  pointer-events: none;
+}
+
+.detail {
+  z-index: 0;
+  position: absolute;
+  display: flex;
+  width: 80rem;
+  align-items: center;
+  height: 100%;
+  gap: 2rem;
+  width: fit-content;
+}
+
+.detail-right {
+  transform: translateX(50%);
+}
+
+.detail-left {
+  transform: translateX(-50%);
+  flex-direction: row-reverse;
+}
+
+.detail-line {
+  height: 1px;
+  width: 20em;
+  background-image: linear-gradient(400deg, #5c9ead, #e39774, #f45b69);
+  background-position: center;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+
+.middle-line {
+  height: 100%;
+  width: 2px;
+  background-color: white;
+  background-position: center;
+  background-size: 1px 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+}
+
+.detail-text {
+  font-size: 2rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 500;
+  text-align: center;
 }
 
 /* =================== QUIZ ================= */
