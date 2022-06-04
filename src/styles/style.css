@@ -1,0 +1,298 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: rgb(252, 252, 252);
+  background-color: #333;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+header {
+  margin: 2rem 2rem 4rem 2rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  width: 225px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+header a {
+  width: 225px;
+}
+
+.underline {
+  transition: background-position 0.3s ease-in-out;
+  background-image: linear-gradient(400deg, #5c9ead, #e39774, #f45b69);
+  background-position: bottom;
+  background-size: 3em 30%;
+  background-repeat: no-repeat;
+}
+
+header a:hover .underline {
+  background-position: left bottom;
+}
+
+header p {
+  font-style: italic;
+  margin: 0.5rem 0;
+}
+
+#level-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =================== HOME ================= */
+.hero {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10rem 0;
+}
+
+.hero h1 {
+  font-size: 10rem;
+  font-family: 'Josefin Sans', sans-serif;
+  height: fit-content;
+}
+
+.hero h2 {
+  font-size: 1.7em;
+  font-weight: 100;
+  font-family: 'Josefin Sans', sans-serif;
+  margin-bottom: 2rem;
+}
+
+.hero p {
+  font-family: 'Jost', sans-serif;
+  font-weight: 100;
+  margin: 0 20%;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.hero-buttons {
+  margin-top: 3em;
+}
+
+.hero-buttons a {
+  transition: all 0.3s ease-in-out;
+  margin: 2rem;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  font-family: 'Josefin Sans', sans-serif;
+  border-radius: 5px;
+  padding: 0.6rem 2rem 0.5rem 2rem;
+  background-color: #5c9ead;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-buttons a:hover {
+  background-color: #e39774;
+  color: #333;
+  border-color: #333;
+}
+
+.reason,
+.hiragana {
+  margin: 5rem 10rem 10rem 10rem;
+}
+
+.reason h3 {
+  font-size: 4rem;
+  margin-bottom: 5rem;
+}
+
+.reason-detail {
+  display: flex;
+  flex-direction: row;
+}
+
+.nihongo h4 {
+  font-size: 8rem;
+  text-shadow: 9px 8px 0px #e39774;
+  /* writing-mode: vertical-rl;
+    text-orientation: upright; */
+  letter-spacing: 5rem;
+}
+
+.reason-detail p, .hiragana p {
+  font-family: 'Jost', sans-serif;
+  font-weight: 100;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.reason-detail__right {
+  display: flex;
+  flex-direction: column;
+}
+
+.splide__slide img {
+  width: 100%;
+  height: auto;
+}
+
+.splide {
+  padding: 3em;
+}
+
+.hiragana {
+  box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.06);
+  padding: 2rem;
+  border-radius: 20px;
+}
+
+.hiragana h3 {
+  font-size: 2rem;
+  margin-bottom: .5rem;
+}
+
+.thin-underline {
+  transition: background-position 0.3s ease-in-out;
+  background-image: linear-gradient(400deg, #5c9ead, #e39774, #f45b69);
+  background-position: bottom;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 2px;
+  margin-top: 2rem;
+}
+
+/* =================== LEVEL LIST ================= */
+
+#level-list_container {
+  margin: 2rem;
+}
+
+#level-list_container h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#level-list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.level-item {
+    margin: .8rem;
+    box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.068);
+    border-radius: 10px;
+    background-color: #5c9ead;
+    padding: 1rem;
+    width: 200px;
+    height: 200px;
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: all 0.2s ease-in-out;
+}
+
+.level-item:hover {
+    transform: translateY(-5px);
+    background-color: #e39774;
+    color: #333;
+    border-color: #333;
+}
+
+/* =================== QUIZ ================= */
+#level-container {
+  text-align: center;
+  margin-top: 8rem;
+}
+
+.quiz h3 {
+  font-size: 7rem;
+  margin: 0;
+  margin-bottom: 4rem;
+}
+
+#answer-buttons {
+  user-select: none;
+}
+
+#answer-buttons button {
+  font-size: 1.5rem;
+  width: 8rem;
+  height: 3rem;
+  margin: 1rem;
+  cursor: pointer;
+  display: inline-block;
+  background-color: rgb(79, 164, 254);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  transition: all 80ms ease-in-out;
+  box-shadow: 10px 10px 4px -4px rgba(0, 0, 0, 0.1);
+}
+
+#answer-buttons button:hover {
+  background-color: #6af886;
+}
+
+.score-container {
+  position: absolute;
+  bottom: 0;
+}
+
+.score-container h3 {
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+#stats {
+  height: 16px;
+  width: 100vw;
+  background-color: rgb(79, 164, 254);
+}
+
+#progress {
+  height: 100%;
+  background-color: #6af886;
+  width: 0;
+}
+
+#wrong-notif-container {
+  height: 53px;
+}
+
+#wrong-notif {
+  background-color: rgb(252, 74, 74);
+  padding: 0.5em 1.5em;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 3em;
+}
+
+#wrong-notif-header {
+  font-size: 1.1em;
+  font-weight: 600;
+}

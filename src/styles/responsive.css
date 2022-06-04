@@ -1,0 +1,57 @@
+@media screen and (max-width: 1500px) {
+  .hero p {
+    margin: 0 10%;
+  }
+  .hero h1 {
+    font-size: 7rem;
+  }
+  .reason {
+    margin: 0;
+  }
+  .reason-detail {
+    padding: 1rem;
+  }
+  .hiragana {
+    margin: 1rem;
+  }
+  .splide {
+    padding: 1rem 0;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .reason-detail {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nihongo h4 {
+    letter-spacing: 0;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .hero p {
+    font-size: 0.9rem;
+  }
+  .reason {
+    margin: 2rem;
+  }
+  .reason h3 {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .nihongo h4 {
+    font-size: 5rem;
+  }
+}
+
+#mobile-indicator {
+  display: none;
+}
+
+@media (max-width: 550px) {
+  #mobile-indicator {
+    display: block;
+  }
+}
