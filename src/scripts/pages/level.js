@@ -7,7 +7,6 @@ let totalAnswered = null
 let previousAnswer = null
 let previousQuestion = null
 let levelPicked = null
-const test = "checkpoint1";
 
 const level = {
   render() {
