@@ -26,11 +26,11 @@ export const dashboard = {
         <div class='checkpoint-header'>
           <h2>CHECKPOINT ${checkpoint.slice(-1)}</h2>
         </div>
-        <div class='checkpoint-list ${checkpoint}'></div>
+        <div class='checkpoint-list' id='${checkpoint}'></div>
       `)
 
       levelListData[checkpoint].forEach((level) => {
-        $(`.${checkpoint}`).append(`
+        $(`#${checkpoint}`).append(`
           <div class='checkpoint-item'>
             <h3>Quiz Question</h3>
             <h2>${level.question}</h2>
@@ -48,7 +48,6 @@ export const dashboard = {
       const search = e.target.value.toLowerCase()
       $('.checkpoint-item').each((index, item) => {
         const question = $(item).find('h2').text().toLowerCase()
-        console.log(item);
         if (question.includes(search)) {
           $(item).show()
         } else {
@@ -58,15 +57,23 @@ export const dashboard = {
     })
 
     $('.edit-button').on('click', (e) => {
-      const question = $(e.target).parent().parent().find('h2').text()
+      const id = getId(e)
+      const question = getQuestion(e)
       const answer = $(e.target).parent().parent().find('h4').text()
-      editPopup.popupRender(question, answer)
+      const quizIndex = getIndex(id, question)
+      editPopup.popupRender(question, answer, 'Edit', id, quizIndex)
     })
 
-    $('.delete-button').on('click', (e) => {})
+    $('.delete-button').on('click', (e) => {
+      const id = getId(e)
+      const question = getQuestion(e)
+      const quizIndex = getIndex(id, question)
+      levelAPI.deleteCheckpoint(id, quizIndex)
+      location.reload()
+    })
 
     $('#add-button').on('click', () => {
-      editPopup.popupRender('', '')
+      editPopup.popupRender('', '', 'Add', '')
     })
   }
 }
@@ -75,4 +82,22 @@ const getCheckpoint = (levelListData) => {
   return Object.keys(levelListData).filter((key) => {
     return key.includes('checkpoint')
   })
+}
+
+const getIndex = (id, checkpoint) => {
+  let result
+  $(`#${id} .checkpoint-item`).each((index, item) => {
+    if ($(item).find('h2').text() === checkpoint) {
+      result = index
+    }
+  })
+  return result
+}
+
+const getId = (e) => {
+  return $(e.target).closest('.checkpoint-list').attr('id')
+}
+
+const getQuestion = (e) => {
+  return $(e.target).closest('.checkpoint-item').find('h2').text()
 }
