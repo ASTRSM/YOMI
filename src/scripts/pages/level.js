@@ -1,4 +1,4 @@
-import levelList from '../data/level-list'
+import { levelAPI } from '../data/level-list_API'
 import UrlParser from '../routes/url-parser'
 import wrongNotification from '../utils/level-notification-initiator'
 
@@ -35,7 +35,8 @@ const level = {
   }
 }
 
-const initiateLevel = (levelPick) => {
+const initiateLevel = async (levelPick) => {
+  const levelList = await levelAPI.getLevelList()
   levelPicked = levelList[levelPick]
 
   let pickedQuestion = pickQuestion()

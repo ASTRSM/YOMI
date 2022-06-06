@@ -114,5 +114,3 @@ const levelListData = {
     { question: 'よる', answer: 'night' },
   ]
 }
-
-export default levelListData

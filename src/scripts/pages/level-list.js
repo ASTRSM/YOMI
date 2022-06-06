@@ -1,4 +1,4 @@
-import levelListData from '../data/level-list'
+import { levelAPI } from '../data/level-list_API'
 import user from '../data/user'
 
 const levelList = {
@@ -13,7 +13,8 @@ const levelList = {
     `
   },
 
-  afterRender() {
+  async afterRender() {
+    const levelListData = await levelAPI.getLevelList()
     let flag = 1
     let levelFlag = user[0].highestLevelUnlocked
 
@@ -55,6 +56,9 @@ const isCheckpoint = (level) => {
 }
 
 const addSpace = (str) => {
+  if (str.includes('checkpoint')) {
+    str = str.slice(7)
+  }
   return str.replace(/.{1}$/,' $&').toUpperCase() ;
 }
 

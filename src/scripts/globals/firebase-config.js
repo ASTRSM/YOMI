@@ -1,6 +1,10 @@
+import { initializeApp } from "firebase/app";
+import { getDatabase } from "firebase/database";
+
 const firebaseConfig = {
   apiKey: "AIzaSyBDV4uWTK7Tb4EdULhU2VHcv49DaS_8jIw",
   authDomain: "yomi-f9728.firebaseapp.com",
+  databaseURL: "https://yomi-f9728-default-rtdb.asia-southeast1.firebasedatabase.app",
   projectId: "yomi-f9728",
   storageBucket: "yomi-f9728.appspot.com",
   messagingSenderId: "641679206365",
@@ -8,4 +12,7 @@ const firebaseConfig = {
   measurementId: "G-E3NR6FDJ72"
 };
 
-export default firebaseConfig;
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+export const db = getDatabase(app);
+

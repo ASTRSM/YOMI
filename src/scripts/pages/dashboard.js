@@ -1,4 +1,4 @@
-import levelListData from '../data/level-list'
+import { levelAPI } from '../data/level-list_API'
 import { editPopup } from '../utils/popup/edit-popup'
 
 export const dashboard = {
@@ -17,8 +17,9 @@ export const dashboard = {
     `
   },
 
-  afterRender() {
-    const checkpoint = getCheckpoint()
+  async afterRender() {
+    const levelListData = await levelAPI.getLevelList()
+    const checkpoint = getCheckpoint(levelListData)
 
     checkpoint.forEach((checkpoint) => {
       $('.checkpoint-container').append(`
@@ -70,7 +71,7 @@ export const dashboard = {
   }
 }
 
-const getCheckpoint = () => {
+const getCheckpoint = (levelListData) => {
   return Object.keys(levelListData).filter((key) => {
     return key.includes('checkpoint')
   })
