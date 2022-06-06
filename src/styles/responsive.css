@@ -44,6 +44,18 @@
   .nihongo h4 {
     font-size: 5rem;
   }
+  .popup-content {
+    width: 100%;
+  }
+  #dashboard-container {
+    text-align: center;
+  }
+  #dashboard-header {
+    width: 100%;
+  }
+  .checkpoint-container {
+    padding: 0;
+  }
 }
 
 #mobile-indicator {

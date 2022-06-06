@@ -36,8 +36,6 @@ const level = {
 }
 
 const initiateLevel = (levelPick) => {
-  console.log(levelPick);
-  // const levelString = `level${levelPick}`
   levelPicked = levelList[levelPick]
 
   let pickedQuestion = pickQuestion()

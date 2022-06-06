@@ -17,6 +17,14 @@ a {
   text-decoration: none;
 }
 
+h1, h2, h3, h4, button {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+a, button {
+  cursor: pointer;
+}
+
 h1 {
   font-weight: 400;
 }
@@ -29,7 +37,6 @@ header h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
   width: 225px;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 header a {
@@ -74,14 +81,12 @@ header p {
 
 .hero h1 {
   font-size: 10rem;
-  font-family: 'Josefin Sans', sans-serif;
   height: fit-content;
 }
 
 .hero h2 {
   font-size: 1.7em;
   font-weight: 100;
-  font-family: 'Josefin Sans', sans-serif;
   margin-bottom: 2rem;
 }
 
@@ -102,13 +107,11 @@ header p {
   margin: 2rem;
   font-size: 1rem;
   letter-spacing: 1px;
-  font-family: 'Josefin Sans', sans-serif;
   border-radius: 5px;
   padding: 0.6rem 2rem 0.5rem 2rem;
   background-color: #5c9ead;
   color: #fff;
   border: none;
-  cursor: pointer;
 }
 
 .hero-buttons a:hover {
@@ -185,6 +188,31 @@ header p {
   margin-top: 2rem;
 }
 
+.bottom-right {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin: 2rem;
+}
+
+#dashboard-link a {
+  font-family: 'Josefin Sans',sans-serif;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background-color: #e39774;
+  color: #333;
+  padding: 1rem;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+#dashboard-link a:hover {
+  background-color: #5c9ead;
+}
+
 /* =================== LEVEL LIST ================= */
 
 #level-list_container {
@@ -195,7 +223,6 @@ header p {
   font-size: 2rem;
   margin-bottom: 4rem;
   text-align: center;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 #level-list {
@@ -326,13 +353,13 @@ header p {
 }
 
 #answer-buttons button {
-  font-size: 1.5rem;
+  font-family: 'Jost', sans-serif;
+  font-size: 1.6rem;
   width: 8rem;
   height: 3rem;
   margin: 1rem;
-  cursor: pointer;
   display: inline-block;
-  background-color: rgb(79, 164, 254);
+  background-color: #5c9ead;
   color: white;
   border: none;
   border-radius: 20px;
@@ -357,7 +384,7 @@ header p {
 #stats {
   height: 16px;
   width: 100vw;
-  background-color: rgb(79, 164, 254);
+  background-color: #5c9ead;
 }
 
 #progress {
@@ -371,7 +398,7 @@ header p {
 }
 
 #wrong-notif {
-  background-color: rgb(252, 74, 74);
+  background-color: #f45b69;
   padding: 0.5em 1.5em;
   border-radius: 10px;
   width: fit-content;
@@ -382,4 +409,195 @@ header p {
 #wrong-notif-header {
   font-size: 1.1em;
   font-weight: 600;
+}
+
+/* =================== DASHBOARD ================= */
+
+#dashboard-container {
+  display: flex;
+  flex-flow: column;
+  margin: 2rem;
+  align-items: center;
+}
+
+#dashboard-header h1{
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+#dashboard-header {
+  width: 50%;
+}
+
+#dashboard-search {
+  padding: .7rem .5rem;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  border: white solid 1px;
+  border-radius: 20px;
+  margin-bottom: 5rem;
+}
+
+#dashboard-search:focus {
+  outline: white solid 1px;
+}
+
+#dashboard-search::placeholder {
+  color: white;
+}
+
+.checkpoint-header h2 {
+  margin-bottom: 2rem;
+}
+
+.checkpoint-container {
+  width: 100%;
+  margin: 3rem;
+  padding: 0 4rem
+}
+
+.checkpoint-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
+  margin-bottom: 6rem;
+}
+
+.checkpoint-item {
+  box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  background-color: rgb(77, 77, 77);
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.checkpoint-item > * {
+  margin-bottom: .3rem;
+}
+
+.checkpoint-item h3 {
+  font-weight: 200;
+  font-size: 1.2rem;
+}
+
+.checkpoint-item-buttons {
+  margin-top: .5rem;
+}
+
+.checkpoint-item-buttons button {
+  width: 80px;
+  padding: .4rem .5rem;
+  margin: .2rem;
+}
+
+.delete-button {
+  background-color: #f45b69;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  transition: all 80ms ease-in-out;
+}
+
+.delete-button:hover {
+  background-color: #fd727e;
+}
+
+.edit-button {
+  background-color: #5c9ead;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  transition: all 80ms ease-in-out;
+}
+
+.edit-button:hover {
+  background-color: #56c6df;
+}
+
+/* =================== POPUP ================= */
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.329);
+  place-items: center;
+  font-family: 'noto sans', sans-serif;
+}
+
+.popup-content {
+  display: none;
+  border-radius: 10px;
+  background-color: white;
+  width: 480px;
+  padding: 2rem;
+  transform: translateY(-20px);
+  transition: all .3s;
+  background-color: #333;
+}
+
+.popup-content__active {
+  transform: translateY(0);
+}
+
+.popup-form {
+  display: flex;
+  flex-flow: column;
+  margin: 1rem 0;
+}
+
+.popup-form label {
+  font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  font-weight: 100;
+  margin-bottom: .1rem;
+}
+
+.popup-input {
+  padding: .5rem .7rem;
+  border: 1px solid #333;
+  border-radius: 20px;
+}
+
+.popup-input:focus {
+  outline: none;
+}
+
+#edit-question {
+  margin-bottom: .7rem;
+}
+
+.popup-button {
+  align-self: flex-end;
+  background-color: #e39774;
+  padding: .5rem 1rem; 
+  border-radius: 20px;
+  margin-top: 1rem;
+  border: none;
+}
+
+.popup-button:hover {
+  background-color: #f5a98e;
+}
+
+#add-button {
+  font-size: 2rem;
+  background-color: #e39774;
+  color: #333;
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  padding: .1rem;
+  transition: all 80ms ease-in-out;
+}
+
+#add-button:hover {
+  background-color: #f5a98e;
 }
