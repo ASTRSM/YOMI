@@ -213,6 +213,87 @@ header p {
   background-color: #5c9ead;
 }
 
+/* =================== ABOUT ME ================= */
+
+#about-me {
+  margin: 10rem;
+  text-align: center;
+}
+
+#about-me h3 {
+  font-size: 5rem;
+  margin-bottom: 3rem;
+  text-shadow: #f45b69 3px 3px 0, #5c9ead 5px 5px 0;
+}
+
+.about-me-detail {
+  display: flex;
+  justify-content: center;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: justify;
+  gap: 1rem;
+  font-size: 1rem;
+  font-family: 'Jost', sans-serif;
+  font-weight: 100;
+}
+
+.about-me-detail > * {
+  padding: 2rem;
+  box-shadow: 10px 10px 4px -4px rgba(0, 0, 0, 0.1);
+}
+
+.about-me-detail h2 {
+  margin-bottom: 1rem;
+}
+
+.about-me-detail__left {
+  flex-basis: 50%;
+}
+
+.about-me-detail__right {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+}
+
+.contact-me {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.contact-me > * {
+  padding: .5rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  align-items: flex-end;
+  font-family: 'Josefin Sans' ,sans-serif;
+  gap: .5rem;
+  transition: outline 0.2s ease-in-out;
+  outline: transparent solid 2px;
+}
+
+.contact-me > *:hover {
+  outline: white solid 2px;
+}
+
+#email {
+  background-color: #f45b69;
+}
+
+#linkedin {
+  background-color: #5c9ead;
+}
+
+#github {
+  background-color: #e39774;
+}
+
 /* =================== LEVEL LIST ================= */
 
 #level-list_container {

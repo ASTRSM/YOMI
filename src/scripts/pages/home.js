@@ -58,6 +58,37 @@ const home = {
         </p>
         <div class='thin-underline'></div>
       </section>
+      <section id='about-me'>
+        <h3>About Me</h3>
+        <div class='about-me-detail'>
+          <div class='about-me-detail__left'>
+            <h2>Creator details</h2>
+            <p>
+              I'm a web engineer who is passionate about learning new things. I'm currently studying Information System at the Gunadarma University. I'm also a fan of Japanese culture and still trying to learn the language.
+            </p>
+          </div>
+          <div class='about-me-detail__right'>
+            <h2>Contact me</h2>
+            <p>
+              You can contact me through the following links:
+            </p>
+            <div class='contact-me'>
+              <a href='mailto:ddefrito84@gmail.com' id='email'>
+                <img src='./images/icons/email.svg' alt='email logo' height='20px'>
+                Email
+              </a>
+              <a href='https://www.linkedin.com/in/dhafad/' id='linkedin'>
+                <img src='./images/icons/linkedin.svg' alt='linkedin logo' height='20px'>
+                LinkedIn
+              </a>
+              <a href='https://github.com/ASTRSM' id='github'>
+                <img src='./images/icons/github.svg' alt='github logo' height='20px'>                
+                Github
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     `
   },
