@@ -1,5 +1,6 @@
 import { levelAPI } from '../data/level-list_API'
 import UrlParser from '../routes/url-parser'
+import { HumanizeLvlStr } from '../utils/humanize-level-str'
 import wrongNotification from '../utils/level-notification-initiator'
 
 let correctAnswer = null
@@ -18,11 +19,17 @@ const level = {
       </section>
       <section id='wrong-notif-container'></section>
       <section class="score-container">
-          <h3>Progress to Continue</h3>
+          <h3>Progress Above 80% Continue</h3>
           <div id="stats">
               <div id="progress">
               </div>
           </div>
+      </section>
+      <section id='next-level-container'>
+        <button id='next-level'>
+          <P>NEXT LEVEL</P>
+          <img src="./images/icons/arrow.svg" alt="next level">
+        </button>
       </section>
     </div>
     `
@@ -32,12 +39,15 @@ const level = {
   afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     initiateLevel(url.id)
+    levelTitle(url.id)
+    $('#next-level').hide()
   }
 }
 
 const initiateLevel = async (levelPick) => {
   const levelList = await levelAPI.getLevelList()
   levelPicked = levelList[levelPick]
+  const nextLevel = getNextLevel(levelList, levelPick)
 
   let pickedQuestion = pickQuestion()
   renderLevel(pickedQuestion)
@@ -45,7 +55,7 @@ const initiateLevel = async (levelPick) => {
   $('#answer-buttons').each(function () {
     $(this).on('click', (event) => {
       const id = event.target.id
-      checkAnswer(pickedQuestion, id)
+      checkAnswer(pickedQuestion, id, nextLevel)
       pickedQuestion = pickQuestion()
       renderLevel(pickedQuestion)
     })
@@ -63,25 +73,22 @@ const renderLevel = (pickedQuestion) => {
 }
 
 // percentage score = #correctAnswer / #total
-function checkAnswer(index, userAnswer) {
+function checkAnswer(index, userAnswer, nextLevel) {
   totalAnswered++
   if (levelPicked[index].answer === userAnswer) {
     correctAnswer++
     $('#wrong-notif-container').html(``)
-    renderPercentage(correctAnswer, totalAnswered)
+    renderPercentage(correctAnswer, totalAnswered, nextLevel)
   } else {
-    if (correctAnswer > 0) {
-      correctAnswer--
-    }
-    console.log('wrong')
     wrongNotification(levelPicked[index].question, levelPicked[index].answer)
-    renderPercentage(correctAnswer, totalAnswered)
+    renderPercentage(correctAnswer, totalAnswered, nextLevel)
   }
 }
 
-const renderPercentage = (correctAnswer, totalAnswered) => {
+const renderPercentage = (correctAnswer, totalAnswered, nextLevel) => {
   if (totalAnswered > levelPicked.length) {
-    const percentageScore = (correctAnswer / totalAnswered) * 100
+    const percentageScore = Math.round((correctAnswer / totalAnswered) * 100)
+    toNextLevel(percentageScore, nextLevel)
     $('#progress').css('width', `${percentageScore}%`)
   }
 }
@@ -154,6 +161,40 @@ function shuffle(array) {
 function randomize(indexLength) {
   const randomIndex = Math.floor(Math.random() * indexLength)
   return randomIndex
+}
+
+const toNextLevel = (percentageScore, nextLevel) => {
+  if (percentageScore >= 80) {
+    $('#next-level').show()
+  } else {
+    $('#next-level').hide()
+  }
+
+  $('#next-level').on('click', () => {
+    emptyVariable()
+    window.location.href = `#/level/${nextLevel}`
+  })
+}
+
+const getNextLevel = (levelList, levelPick) => {
+  const currentLevel = levelPick
+  const allkeys = Object.keys(levelList).map((key) => {
+    return key
+  })
+  const nextLevel = allkeys[allkeys.indexOf(currentLevel) + 1]
+  return nextLevel
+}
+
+const levelTitle = (id) => {
+  const title = HumanizeLvlStr(id)
+  window.document.title = `YOMI | ${title}`
+}
+
+const emptyVariable = () => {
+  correctAnswer = null
+  totalAnswered = null
+  previousAnswer = null
+  previousQuestion = null
 }
 
 export default level

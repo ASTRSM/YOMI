@@ -434,8 +434,9 @@ header p {
 }
 
 #answer-buttons button {
-  font-family: 'Jost', sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
   font-size: 1.6rem;
+  font-weight: 600;
   width: 8rem;
   height: 3rem;
   margin: 1rem;
@@ -476,6 +477,7 @@ header p {
 
 #wrong-notif-container {
   height: 53px;
+  margin-top: 3em;
 }
 
 #wrong-notif {
@@ -484,12 +486,51 @@ header p {
   border-radius: 10px;
   width: fit-content;
   margin: 0 auto;
-  margin-top: 3em;
 }
 
 #wrong-notif-header {
   font-size: 1.1em;
   font-weight: 600;
+}
+
+#next-level-container {
+  display: grid;
+  margin-top: 2rem;
+  /* height: 100vh; */
+  place-items: center;
+  /* position: absolute; */
+  right: 0;
+  top: 0;
+  /* width: 10%; */
+}
+
+#next-level {
+  padding: .5rem;
+  border-radius: 40px;
+  height: 50px;
+  width: 200px;
+  background-color: #6af886;
+  outline: none;
+  border: none;   
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#next-level *:first-child {
+  flex-basis: 70%;
+  font-size: 1.1rem;
+  color: white;
+}
+
+#next-level img {
+  height: 100%;
+  width: 100%;
+  flex-basis: 20%;
+}
+
+#next-level:hover {
+  outline: solid 2px rgb(255, 255, 255);
 }
 
 /* =================== DASHBOARD ================= */

@@ -1,8 +1,10 @@
 import { levelAPI } from '../data/level-list_API'
 import user from '../data/user'
+import { HumanizeLvlStr } from '../utils/humanize-level-str'
 
 const levelList = {
   render() {
+    window.document.title = `YOMI | LEVEL LIST`
     return `
       <section id='level-list_container'>
         <h2>LEVEL LIST</h2>
@@ -25,7 +27,7 @@ const levelList = {
           <div class='detail-line'></div>
           <div class='detail-text'>${levelListData[level][0].question}</div>
         </div>
-        <a href='#/level/${level}' id='${level}' class='level-item ${isCheckpoint(level)} ${isDone(levelFlag, flag)}''>${addSpace(level)}</a>
+        <a href='#/level/${level}' id='${level}' class='level-item ${isCheckpoint(level)} ${isDone(levelFlag, flag)}''>${HumanizeLvlStr(level)}</a>
       </div>
       `
       flag++
@@ -53,13 +55,6 @@ const isCheckpoint = (level) => {
     return `checkpoint`
   }
     return 'level'
-}
-
-const addSpace = (str) => {
-  if (str.includes('checkpoint')) {
-    str = str.slice(7)
-  }
-  return str.replace(/.{1}$/,' $&').toUpperCase() ;
 }
 
 export default levelList
