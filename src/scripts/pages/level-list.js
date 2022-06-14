@@ -1,5 +1,4 @@
 import { levelAPI } from '../data/level-list_API'
-import user from '../data/user'
 import { HumanizeLvlStr } from '../utils/humanize-level-str'
 
 const levelList = {
@@ -18,7 +17,7 @@ const levelList = {
   async afterRender() {
     const levelListData = await levelAPI.getLevelList()
     let flag = 1
-    let levelFlag = user[0].highestLevelUnlocked
+    let levelFlag = getProgress()
 
     Object.keys(levelListData).forEach((level) => {
       const levelButton = `
@@ -55,6 +54,15 @@ const isCheckpoint = (level) => {
     return `checkpoint`
   }
     return 'level'
+}
+
+const getProgress = () => {
+  if (sessionStorage.getItem('level')) {
+    const level = JSON.parse(sessionStorage.getItem('level'))
+    return level.highestLevelUnlocked
+  }
+  const level = JSON.parse(localStorage.getItem('level'))
+  return level.highestLevelUnlocked
 }
 
 export default levelList

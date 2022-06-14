@@ -35,6 +35,7 @@
     "@splidejs/splide": "^4.0.3",
     "@splidejs/splide-extension-auto-scroll": "^0.4.2",
     "autoprefixer": "^10.4.7",
-    "firebase": "^9.8.2"
+    "firebase": "^9.8.2",
+    "tippy.js": "^6.3.7"
   }
 }

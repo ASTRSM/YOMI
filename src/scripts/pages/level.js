@@ -1,4 +1,5 @@
 import { levelAPI } from '../data/level-list_API'
+import user from '../data/userAPI'
 import UrlParser from '../routes/url-parser'
 import { HumanizeLvlStr } from '../utils/humanize-level-str'
 import wrongNotification from '../utils/level-notification-initiator'
@@ -32,6 +33,7 @@ const level = {
         </button>
       </section>
     </div>
+    <div id="hamburger"><a href="" aria-label="hamburger">☰</a></div>
     `
   },
   
@@ -41,13 +43,19 @@ const level = {
     initiateLevel(url.id)
     levelTitle(url.id)
     $('#next-level').hide()
+    if (!sessionStorage.getItem('level') && !localStorage.getItem('level')) {
+      localStorage.setItem('level', JSON.stringify({
+        highestLevelUnlocked: 1
+      }))
+    }
   }
 }
 
 const initiateLevel = async (levelPick) => {
   const levelList = await levelAPI.getLevelList()
   levelPicked = levelList[levelPick]
-  const nextLevel = getNextLevel(levelList, levelPick)
+  const nextLevel = getNextLevel(levelList, levelPick)[0]
+  const nextLevelIndex = getNextLevel(levelList, levelPick)[1]
 
   let pickedQuestion = pickQuestion()
   renderLevel(pickedQuestion)
@@ -55,7 +63,7 @@ const initiateLevel = async (levelPick) => {
   $('#answer-buttons').each(function () {
     $(this).on('click', (event) => {
       const id = event.target.id
-      checkAnswer(pickedQuestion, id, nextLevel)
+      checkAnswer(pickedQuestion, id, nextLevel, nextLevelIndex)
       pickedQuestion = pickQuestion()
       renderLevel(pickedQuestion)
     })
@@ -73,22 +81,22 @@ const renderLevel = (pickedQuestion) => {
 }
 
 // percentage score = #correctAnswer / #total
-function checkAnswer(index, userAnswer, nextLevel) {
+function checkAnswer(index, userAnswer, nextLevel, nextLevelIndex) {
   totalAnswered++
   if (levelPicked[index].answer === userAnswer) {
     correctAnswer++
     $('#wrong-notif-container').html(``)
-    renderPercentage(correctAnswer, totalAnswered, nextLevel)
+    renderPercentage(correctAnswer, totalAnswered, nextLevel, nextLevelIndex)
   } else {
     wrongNotification(levelPicked[index].question, levelPicked[index].answer)
-    renderPercentage(correctAnswer, totalAnswered, nextLevel)
+    renderPercentage(correctAnswer, totalAnswered, nextLevel, nextLevelIndex)
   }
 }
 
-const renderPercentage = (correctAnswer, totalAnswered, nextLevel) => {
+const renderPercentage = (correctAnswer, totalAnswered, nextLevel, nextLevelIndex) => {
   if (totalAnswered > levelPicked.length) {
     const percentageScore = Math.round((correctAnswer / totalAnswered) * 100)
-    toNextLevel(percentageScore, nextLevel)
+    toNextLevel(percentageScore, nextLevel, nextLevelIndex)
     $('#progress').css('width', `${percentageScore}%`)
   }
 }
@@ -163,7 +171,7 @@ function randomize(indexLength) {
   return randomIndex
 }
 
-const toNextLevel = (percentageScore, nextLevel) => {
+const toNextLevel = (percentageScore, nextLevel, nextLevelIndex) => {
   if (percentageScore >= 80) {
     $('#next-level').show()
   } else {
@@ -172,6 +180,7 @@ const toNextLevel = (percentageScore, nextLevel) => {
 
   $('#next-level').on('click', () => {
     emptyVariable()
+    saveProgress(nextLevelIndex)
     window.location.href = `#/level/${nextLevel}`
   })
 }
@@ -182,7 +191,8 @@ const getNextLevel = (levelList, levelPick) => {
     return key
   })
   const nextLevel = allkeys[allkeys.indexOf(currentLevel) + 1]
-  return nextLevel
+  const nextLevelIndex = allkeys.indexOf(nextLevel) + 1
+  return [nextLevel, nextLevelIndex]
 }
 
 const levelTitle = (id) => {
@@ -195,6 +205,28 @@ const emptyVariable = () => {
   totalAnswered = null
   previousAnswer = null
   previousQuestion = null
+}
+
+const saveProgress = (nextLevelIndex) => {
+  if (sessionStorage.getItem('level')) {
+    const level = JSON.parse(sessionStorage.getItem('level'))
+    const id = JSON.parse(sessionStorage.getItem('user')).uid
+
+    if (nextLevelIndex > level.highestLevelUnlocked) {
+      level.highestLevelUnlocked = nextLevelIndex
+    user.setUserById(id, level)
+    sessionStorage.setItem('level', JSON.stringify(level))
+    return undefined
+    }
+
+    return undefined
+  }
+
+  const level = JSON.parse(localStorage.getItem('level'))
+  if (nextLevelIndex > level.highestLevelUnlocked) {
+    level.highestLevelUnlocked = nextLevelIndex
+    localStorage.setItem('level', JSON.stringify(level))
+  }
 }
 
 export default level

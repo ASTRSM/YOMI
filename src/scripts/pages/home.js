@@ -1,3 +1,5 @@
+import { authInit } from '../utils/google-auth'
+
 const home = {
   render () {
     return `
@@ -6,11 +8,11 @@ const home = {
         <h1>YOMI</h1>
         <h2>Memorize Hiragana The Easy Way</h2>
         <p>
-        There's no better time than now to begin studying this important Japanese writing system. Learning the Hiragana is the first step on the road to fluency, and you can do it in a few easy steps. You can easily master the Japanese alphabet and it only takes a few minutes each day. This website will give you a well-designed lesson plan that will allow you to master the Hiragana in no time!
+        There's no better time than now to begin studying this important Japanese writing system. Learning the Hiragana is the first step on the road to fluency, and you can do it in a few easy steps. You can easily master the Japanese alphabet and it only takes a few minutes each day. This website will give you a well-designed lesson plan that will allow you to master the Hiragana in no time! And login if you want to save your progress.
         </p>
         <div class='hero-buttons'>
           <a href='#/level-list' id='start-button'>START</a>
-          <a href='#/level-list' id='login-button'>LOGIN</a>
+          <button id='login-button'>LOGIN</button>
         </div>
       </section>
       <section class='reason'>
@@ -94,7 +96,15 @@ const home = {
   },
 
   afterRender () {
-    
+    if (sessionStorage.getItem('user')) {
+      $('#login-button').hide()
+    } else {
+      $('#login-button').show()
+    }
+
+    $('#login-button').on('click', () => {
+      authInit()
+    })
   }
 }
 

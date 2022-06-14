@@ -69,6 +69,37 @@ header p {
   align-items: center;
 }
 
+.username-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 2rem;
+  max-width: 160px;
+  font-size: .5rem;
+  padding: .3rem 1rem;
+  background-color: #f45b69;
+  border-radius: 0.5rem;
+  box-shadow: 0px 4px 7px 3px rgba(0, 0, 0, 0.06);
+}
+
+.username-content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.username-container  h1 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.username-image {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+
 /* =================== HOME ================= */
 .hero {
   height: fit-content;
@@ -102,7 +133,7 @@ header p {
   margin-top: 3em;
 }
 
-.hero-buttons a {
+.hero-buttons * {
   transition: all 0.3s ease-in-out;
   margin: 2rem;
   font-size: 1rem;
@@ -114,7 +145,7 @@ header p {
   border: none;
 }
 
-.hero-buttons a:hover {
+.hero-buttons *:hover {
   background-color: #e39774;
   color: #333;
   border-color: #333;
@@ -533,6 +564,25 @@ header p {
   outline: solid 2px rgb(255, 255, 255);
 }
 
+#hamburger {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 4rem 2rem;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e39774;
+  border-radius: 50%;
+}
+
+#hamburger a {
+  color: #333;
+  font-size: 1.5rem;
+  padding: .5rem .8rem;
+}
+
 /* =================== DASHBOARD ================= */
 
 #dashboard-container {
@@ -784,4 +834,30 @@ input[type="radio"]{
 #option-2:checked:checked ~ .option-2 span,
 #option-3:checked:checked ~ .option-3 span{
   color: #fff;
+}
+
+/* =================== TIPPY ================= */
+
+.tippy-box[data-theme~='custom'] {
+  background-color: #e39774;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  font-family: 'Josefin Sans',sans-serif;
+}
+
+.tippy-box[data-theme~='custom'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: #e39774;
+}
+
+.tippy-box[data-theme~="custom"] .tippy-content {
+  padding: 1rem;
+}
+
+#logout-button {
+  background-color: #e39774;
+  color: rgb(0, 0, 0);
+  border: none;
+  transition: all 80ms ease-in-out;
 }
