@@ -1,6 +1,7 @@
 import { levelAPI } from '../data/level-list_API'
 import user from '../data/userAPI'
 import UrlParser from '../routes/url-parser'
+import { helpJourneyInit } from '../utils/help-init'
 import { HumanizeLvlStr } from '../utils/humanize-level-str'
 import wrongNotification from '../utils/level-notification-initiator'
 
@@ -26,14 +27,15 @@ const level = {
               </div>
           </div>
       </section>
+      <div id="hamburger"><a href="#/level-list" aria-label="hamburger">☰ LEVEL LIST</a></div>
       <section id='next-level-container'>
         <button id='next-level'>
           <P>NEXT LEVEL</P>
           <img src="./images/icons/arrow.svg" alt="next level">
         </button>
       </section>
+      <section id='help'>?</section>
     </div>
-    <div id="hamburger"><a href="" aria-label="hamburger">☰</a></div>
     `
   },
   
@@ -48,6 +50,8 @@ const level = {
         highestLevelUnlocked: 1
       }))
     }
+
+    helpJourneyInit()
   }
 }
 
@@ -208,7 +212,7 @@ const emptyVariable = () => {
 }
 
 const saveProgress = (nextLevelIndex) => {
-  if (sessionStorage.getItem('level')) {
+  if (sessionStorage.getItem('user')) {
     const level = JSON.parse(sessionStorage.getItem('level'))
     const id = JSON.parse(sessionStorage.getItem('user')).uid
 

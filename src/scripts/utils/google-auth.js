@@ -33,6 +33,7 @@ const authInit = () => {
 const signOutInit = () => {
   signOut(auth).then(() => {
     sessionStorage.removeItem('user');
+    sessionStorage.removeItem('level');
     location.reload();
   }).catch((error) => {
     alert(error.message);
@@ -44,6 +45,7 @@ function authStateObserver (user) {
     console.log('user signed in', user);
     setUserLevel(user.uid);
   } else {
+    sessionStorage.removeItem('level');
   }
 }
 

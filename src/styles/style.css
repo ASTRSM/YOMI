@@ -244,6 +244,12 @@ header p {
   background-color: #5c9ead;
 }
 
+.hero span {
+  font-style: italic;
+  color: #5c9ead;
+  font-weight: 600;
+}
+
 /* =================== ABOUT ME ================= */
 
 #about-me {
@@ -456,8 +462,9 @@ header p {
 
 .quiz h3 {
   font-size: 7rem;
-  margin: 0;
-  margin-bottom: 4rem;
+  width: fit-content;
+  text-align: center;
+  margin: auto auto 4rem;
 }
 
 #answer-buttons {
@@ -465,9 +472,9 @@ header p {
 }
 
 #answer-buttons button {
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, 'Arial Narrow', Arial, sans-serif;
+  font-family: 'Helvetica Neue', sans-serif;
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 500;
   width: 8rem;
   height: 3rem;
   margin: 1rem;
@@ -507,8 +514,8 @@ header p {
 }
 
 #wrong-notif-container {
-  height: 53px;
-  margin-top: 3em;
+  height: 48px;
+  margin-top: 2em;
 }
 
 #wrong-notif {
@@ -526,7 +533,6 @@ header p {
 
 #next-level-container {
   display: grid;
-  margin-top: 2rem;
   /* height: 100vh; */
   place-items: center;
   /* position: absolute; */
@@ -565,22 +571,50 @@ header p {
 }
 
 #hamburger {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  margin: 4rem 2rem;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
   align-items: center;
   background-color: #e39774;
-  border-radius: 50%;
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 2rem auto;
+  width: 200px;
 }
 
 #hamburger a {
   color: #333;
-  font-size: 1.5rem;
+  font-weight: 200;
+  font-size: 1.2rem;
   padding: .5rem .8rem;
+  font-family: 'Jost', sans-serif;
+  letter-spacing: 2px;
+}
+
+/* =================== HELP ================= */
+
+#help {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  margin: 5rem 2rem;
+  background-color: #f45b69;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.2rem;
+}
+
+.help-next {
+  display: block;
+  border: none;
+  outline: none;
+  padding: .5rem;
+  color: white;
+  background-color: #333;
+  margin-left: auto;
+  z-index: 100;
 }
 
 /* =================== DASHBOARD ================= */
@@ -845,15 +879,25 @@ input[type="radio"]{
   letter-spacing: 1px;
   font-size: 1rem;
   font-family: 'Josefin Sans',sans-serif;
+  user-select: none;
 }
 
 .tippy-box[data-theme~='custom'][data-placement^='bottom'] > .tippy-arrow::before {
   border-bottom-color: #e39774;
 }
-
-.tippy-box[data-theme~="custom"] .tippy-content {
-  padding: 1rem;
+.tippy-box[data-theme~='custom'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: #e39774;
 }
+.tippy-box[data-theme~='custom'][data-placement^='left'] > .tippy-arrow::before {
+  border-left-color: #e39774;
+}
+.tippy-box[data-theme~='custom'][data-placement^='right'] > .tippy-arrow::before {
+  border-right-color: #e39774;
+}
+
+/* .tippy-box[data-theme~="custom"] .tippy-content {
+  padding: 1rem;
+} */
 
 #logout-button {
   background-color: #e39774;
@@ -861,3 +905,4 @@ input[type="radio"]{
   border: none;
   transition: all 80ms ease-in-out;
 }
+
