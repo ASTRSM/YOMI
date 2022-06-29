@@ -45,11 +45,6 @@ const level = {
     initiateLevel(url.id)
     levelTitle(url.id)
     $('#next-level').hide()
-    if (!sessionStorage.getItem('level') && !localStorage.getItem('level')) {
-      localStorage.setItem('level', JSON.stringify({
-        highestLevelUnlocked: 1
-      }))
-    }
 
     helpJourneyInit()
   }

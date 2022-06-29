@@ -14,7 +14,7 @@ const setUserLevel = async (id) => {
   }
   
   const admin = JSON.parse(sessionStorage.getItem('level')).admin;
-  if (admin && !$('#help')) {
+  if (admin && !$('#help').length) {
     dashboardInit()
   }
 }

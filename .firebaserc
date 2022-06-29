@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "yomi-f9728"
+  },
+  "targets": {
+    "yomi-f9728": {
+      "hosting": {
+        "yomi": [
+          "yomi-learn"
+        ]
+      }
+    }
   }
 }

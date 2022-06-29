@@ -11,6 +11,12 @@ $(function () {
     renderPage()
     initFirebaseAuth()
   })
+
+  if (!sessionStorage.getItem('level') && !localStorage.getItem('level')) {
+    localStorage.setItem('level', JSON.stringify({
+      highestLevelUnlocked: 1
+    }))
+  }
   
   renderPage()
   initFirebaseAuth()
