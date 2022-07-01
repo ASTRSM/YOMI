@@ -3,7 +3,10 @@ import { editPopup } from '../utils/popup/edit-popup'
 
 export const dashboard = {
   render() {
-    $('#dashboard-link').remove()
+    $(function () {
+      $('#dashboard-link').remove()
+    })
+    
     return `
     <section id='dashboard-container'>
       <div id='dashboard-header'>

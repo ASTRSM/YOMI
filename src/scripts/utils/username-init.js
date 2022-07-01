@@ -3,6 +3,7 @@ import { signOutInit } from './google-auth';
 
 export const usernameInit = () => {
   if (!sessionStorage.getItem('user')) {
+    $('#dashboard-link').remove()
     return undefined
   }
 

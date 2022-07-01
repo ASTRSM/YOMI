@@ -17,7 +17,7 @@ const setUserLevel = async (id) => {
   }
   cycleLevel()
   const admin = JSON.parse(sessionStorage.getItem('admin')).admin
-  if (admin && !$('#help').length) {
+  if (admin && !$('#help').length && !$('#add-button').length) {
     dashboardInit()
   }
 }
