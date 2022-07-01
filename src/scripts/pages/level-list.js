@@ -15,6 +15,7 @@ const levelList = {
   },
 
   async afterRender() {
+    $('body, html, main').removeClass('level-custom')
     const levelListData = await levelAPI.getLevelList()
     let flag = 1
     let levelFlag = getProgress()

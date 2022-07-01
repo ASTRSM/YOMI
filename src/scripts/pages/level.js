@@ -27,12 +27,14 @@ const level = {
               </div>
           </div>
       </section>
-      <div id="hamburger"><a href="#/level-list" aria-label="hamburger">☰ LEVEL LIST</a></div>
-      <section id='next-level-container'>
-        <button id='next-level'>
-          <P>NEXT LEVEL</P>
-          <img src="./images/icons/arrow.svg" alt="next level">
-        </button>
+      <section id="hamburger">
+        <a href="#/level-list" aria-label="hamburger">☰ LEVEL LIST</a>
+        <div id='next-level-container'>
+          <button id='next-level'>
+            <P>NEXT LEVEL</P>
+            <img src="./images/icons/arrow.svg" alt="next level">
+          </button>
+        </div>
       </section>
       <section id='help'>?</section>
     </div>
@@ -41,12 +43,15 @@ const level = {
   
 
   afterRender() {
+    $('body, html, main').addClass('level-custom')
+    $('header').css('position', 'absolute')
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     initiateLevel(url.id)
     levelTitle(url.id)
     $('#next-level').hide()
 
     helpJourneyInit()
+    changePosition()
   }
 }
 
@@ -84,7 +89,7 @@ function checkAnswer(index, userAnswer, nextLevel, nextLevelIndex) {
   totalAnswered++
   if (levelPicked[index].answer === userAnswer) {
     correctAnswer++
-    $('#wrong-notif-container').html(``)
+    $('#wrong-notif-container').html(``).css('transform', 'translateY(-100%)')
     renderPercentage(correctAnswer, totalAnswered, nextLevel, nextLevelIndex)
   } else {
     wrongNotification(levelPicked[index].question, levelPicked[index].answer)
@@ -226,6 +231,12 @@ const saveProgress = (nextLevelIndex) => {
     level.highestLevelUnlocked = nextLevelIndex
     localStorage.setItem('level', JSON.stringify(level))
   }
+}
+
+const changePosition = () => {
+  $(function () {
+    $('.username-container').hide()
+  })
 }
 
 export default level

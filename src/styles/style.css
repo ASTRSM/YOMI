@@ -30,7 +30,7 @@ h1 {
 }
 
 header {
-  margin: 2rem 2rem 4rem 2rem;
+  margin: 2rem;
 }
 
 header h1 {
@@ -455,9 +455,18 @@ header p {
 }
 
 /* =================== QUIZ ================= */
+.level-custom {
+  overflow: hidden;
+  height: 100%;
+}
+
 #level-container {
   text-align: center;
-  margin-top: 8rem;
+  height: 100%;
+}
+
+.quiz {
+  min-height: 312px;
 }
 
 .quiz h3 {
@@ -472,9 +481,9 @@ header p {
 }
 
 #answer-buttons button {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: 100;
   width: 8rem;
   height: 3rem;
   margin: 1rem;
@@ -515,12 +524,16 @@ header p {
 
 #wrong-notif-container {
   height: 48px;
-  margin-top: 2em;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  transition: all 0.2s ease-in-out;
+  transform: translateY(-100%);
 }
 
 #wrong-notif {
   background-color: #f45b69;
-  padding: 0.5em 1.5em;
+  padding: 0.5em 3em;
   border-radius: 10px;
   width: fit-content;
   margin: 0 auto;
@@ -532,19 +545,17 @@ header p {
 }
 
 #next-level-container {
+  position: absolute;
   display: grid;
-  /* height: 100vh; */
   place-items: center;
-  /* position: absolute; */
   right: 0;
   top: 0;
-  /* width: 10%; */
 }
 
 #next-level {
   padding: .5rem;
   border-radius: 40px;
-  height: 50px;
+  height: 44px;
   width: 200px;
   background-color: #6af886;
   outline: none;
@@ -571,6 +582,7 @@ header p {
 }
 
 #hamburger {
+  position: relative;
   align-items: center;
   background-color: #e39774;
   border-radius: 40px;
@@ -593,17 +605,23 @@ header p {
 
 #help {
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   width: 40px;
   height: 40px;
-  margin: 5rem 2rem;
+  margin: 2rem;
   background-color: #f45b69;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
   font-size: 1.2rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#help:hover {
+  background-color: #e39774;
 }
 
 .help-next {
