@@ -121,6 +121,14 @@ function randomException(previousIndex, arrayLength) {
 
 function renderLevelQuestion(pickedQuestion) {
   $('#question').html(levelPicked[pickedQuestion].question)
+  $('#question').css('font-size', `8rem`)
+      
+  if ($('#mobile-indicator').is(':visible')) {
+    const textLength = levelPicked[pickedQuestion].question.length
+    if (textLength > 2) {
+      $('#question').css('font-size', `${8 - textLength}rem`)
+    }
+  }
 }
 
 function renderLevelAnswers(pickedQuestion) {
@@ -215,10 +223,14 @@ const saveProgress = (nextLevelIndex) => {
   if (sessionStorage.getItem('user')) {
     const level = JSON.parse(sessionStorage.getItem('level'))
     const id = JSON.parse(sessionStorage.getItem('user')).uid
+    const data = {
+      highestLevelUnlocked: level,
+      admin: JSON.parse(sessionStorage.getItem('admin')).admin,
+    }
 
     if (nextLevelIndex > level.highestLevelUnlocked) {
       level.highestLevelUnlocked = nextLevelIndex
-    user.setUserById(id, level)
+    user.setUserById(id, data)
     sessionStorage.setItem('level', JSON.stringify(level))
     return undefined
     }

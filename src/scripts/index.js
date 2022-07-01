@@ -5,6 +5,7 @@ import '../styles/style.css'
 import '../styles/responsive.css'
 import 'tippy.js/dist/tippy.css';
 import { initFirebaseAuth } from './utils/google-auth';
+import { cycleLevel } from './utils/cycle-level';
 
 $(function () {
   $(window).on('hashchange', function () {
@@ -12,11 +13,7 @@ $(function () {
     initFirebaseAuth()
   })
 
-  if (!sessionStorage.getItem('level') && !localStorage.getItem('level')) {
-    localStorage.setItem('level', JSON.stringify({
-      highestLevelUnlocked: 1
-    }))
-  }
+  cycleLevel()
   
   renderPage()
   initFirebaseAuth()

@@ -1,9 +1,12 @@
 import user from '../data/userAPI'
+import { cycleLevel } from './cycle-level'
 import { dashboardInit } from './dashboard-init'
 
 const setUserLevel = async (id) => {
   const data = await user.getUserById(id)
-  sessionStorage.setItem('level', JSON.stringify(data))
+  sessionStorage.setItem('level', JSON.stringify({highestLevelUnlocked: data.highestLevelUnlocked}))
+  sessionStorage.setItem('admin', JSON.stringify({admin: data.admin}))
+
   if (!data) {
     user.setUserById(id, {
       highestLevelUnlocked: 1
@@ -12,8 +15,8 @@ const setUserLevel = async (id) => {
       highestLevelUnlocked: 1
     }));
   }
-  
-  const admin = JSON.parse(sessionStorage.getItem('level')).admin;
+  cycleLevel()
+  const admin = JSON.parse(sessionStorage.getItem('admin')).admin
   if (admin && !$('#help').length) {
     dashboardInit()
   }
