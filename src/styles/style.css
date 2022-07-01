@@ -471,6 +471,7 @@ header p {
 
 .quiz h3 {
   font-size: 7rem;
+  min-height: 192px;
   width: fit-content;
   text-align: center;
   margin: auto auto 4rem;

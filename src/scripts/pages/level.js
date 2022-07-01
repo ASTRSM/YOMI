@@ -121,12 +121,12 @@ function randomException(previousIndex, arrayLength) {
 
 function renderLevelQuestion(pickedQuestion) {
   $('#question').html(levelPicked[pickedQuestion].question)
-  $('#question').css('font-size', `8rem`)
+  $('#question').css('font-size', `7rem`)
       
   if ($('#mobile-indicator').is(':visible')) {
     const textLength = levelPicked[pickedQuestion].question.length
     if (textLength > 2) {
-      $('#question').css('font-size', `${8 - textLength}rem`)
+      $('#question').css('font-size', `${9.5 - textLength}rem`)
     }
   }
 }
