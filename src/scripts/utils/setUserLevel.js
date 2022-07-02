@@ -5,8 +5,10 @@ import { dashboardInit } from './dashboard-init'
 const setUserLevel = async (id) => {
   const data = await user.getUserById(id)
   sessionStorage.setItem('level', JSON.stringify({highestLevelUnlocked: data.highestLevelUnlocked}))
-  sessionStorage.setItem('admin', JSON.stringify({admin: data.admin}))
-
+  if (data.admin) {
+    sessionStorage.setItem('admin', JSON.stringify({admin: data.admin}))
+  }
+    
   if (!data) {
     user.setUserById(id, {
       highestLevelUnlocked: 1

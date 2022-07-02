@@ -221,18 +221,23 @@ const emptyVariable = () => {
 
 const saveProgress = (nextLevelIndex) => {
   if (sessionStorage.getItem('user')) {
-    const level = JSON.parse(sessionStorage.getItem('level'))
+    let level = JSON.parse(sessionStorage.getItem('level')).highestLevelUnlocked
     const id = JSON.parse(sessionStorage.getItem('user')).uid
-    const data = {
-      highestLevelUnlocked: level,
-      admin: JSON.parse(sessionStorage.getItem('admin')).admin,
-    }
 
-    if (nextLevelIndex > level.highestLevelUnlocked) {
-      level.highestLevelUnlocked = nextLevelIndex
-    user.setUserById(id, data)
-    sessionStorage.setItem('level', JSON.stringify(level))
-    return undefined
+    if (nextLevelIndex > level) {
+      level = nextLevelIndex
+      const data = {
+        highestLevelUnlocked: level
+      }
+
+      if (JSON.parse(sessionStorage.getItem('admin')).admin) {
+        data['admin'] = true
+      }
+
+      console.log(data)
+      user.setUserById(id, data)
+      sessionStorage.setItem('level', JSON.stringify(level))
+      return undefined
     }
 
     return undefined
