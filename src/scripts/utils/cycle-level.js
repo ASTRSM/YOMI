@@ -13,14 +13,24 @@ export const cycleLevel = () => {
   if (sessionLevel) {
     if (localLevel.highestLevelUnlocked > sessionLevel.highestLevelUnlocked) {
       sessionStorage.setItem('level', JSON.stringify(localLevel))
-      user.setUserById(JSON.parse(sessionStorage.getItem('user')).uid, {
-        highestLevelUnlocked: localLevel.highestLevelUnlocked
-      })
+      insertData(localLevel.highestLevelUnlocked)
     } else {
       localStorage.setItem('level', JSON.stringify(sessionLevel))
-      user.setUserById(JSON.parse(sessionStorage.getItem('user')).uid, {
-        highestLevelUnlocked: sessionLevel.highestLevelUnlocked
-      })
+      insertData(sessionLevel.highestLevelUnlocked)
     }
+  }
+}
+
+const insertData = (level) => {
+  if (sessionStorage.getItem('user')) {
+    const data = {
+      highestLevelUnlocked: level
+    }
+
+    if (JSON.parse(sessionStorage.getItem('admin'))) {
+      data['admin'] = true
+    }
+
+    user.setUserById(JSON.parse(sessionStorage.getItem('user')).uid, data)
   }
 }
