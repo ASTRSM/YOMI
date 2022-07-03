@@ -230,7 +230,7 @@ const saveProgress = (nextLevelIndex) => {
         highestLevelUnlocked: level
       }
 
-      if (JSON.parse(sessionStorage.getItem('admin')).admin) {
+      if (JSON.parse(sessionStorage.getItem('admin'))) {
         data['admin'] = true
       }
 
