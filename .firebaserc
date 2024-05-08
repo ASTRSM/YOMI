@@ -1,9 +1,9 @@
 {
   "projects": {
-    "default": "yomi-f9728"
+    "default": "yomi-kana"
   },
   "targets": {
-    "yomi-f9728": {
+    "yomi-kana": {
       "hosting": {
         "yomi": [
           "yomi-learn"

@@ -2,17 +2,16 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBDV4uWTK7Tb4EdULhU2VHcv49DaS_8jIw",
-  authDomain: "yomi-f9728.firebaseapp.com",
-  databaseURL: "https://yomi-f9728-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "yomi-f9728",
-  storageBucket: "yomi-f9728.appspot.com",
-  messagingSenderId: "641679206365",
-  appId: "1:641679206365:web:9a66862a5a1062cf373834",
-  measurementId: "G-E3NR6FDJ72"
+  apiKey: "AIzaSyC1gB2AYPCL54Br_5BncLS2Ro-3FbyJ9PM",
+  authDomain: "yomi-kana.firebaseapp.com",
+  databaseURL: "https://yomi-kana-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "yomi-kana",
+  storageBucket: "yomi-kana.appspot.com",
+  messagingSenderId: "1002037556301",
+  appId: "1:1002037556301:web:c02e49ace22ad3166d9804",
+  measurementId: "G-G4GN67X6YG"
 };
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
-
